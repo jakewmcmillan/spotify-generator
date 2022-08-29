@@ -1,1 +1,1 @@
-# spotify-generator
+# travel blogger
