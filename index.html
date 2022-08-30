@@ -20,22 +20,39 @@
                         <h3 class="card-title">Login:</h3>
                         <form method="POST" class="login">
                             <div class="login-info">
-                                <label for="username" type="username">Username:</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Username:</span>
+                                    </div>
+                                    <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                                  </div>
                             </div>
                             <div class="login-info">
-                                <label for="password" type="password">Password:</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Password:</span>
+                                    </div>
+                                    <input type="text" class="form-control" aria-label="Password" aria-describedby="basic-addon1">
+                                  </div>
                             </div>
                             <div class="login-info">
                                 <button type="submit" class="btn btn-primary btn-block">Submit:</button>
                             </div>
+                            <div class="sign-up">
+                                <div class="text-center">
+                                    Don't have an account with us? <a href="signup.html">Sign up here!</a>
+                                </div>
+                            </div>
                         </form>
                     </div>
+                </div>
             </div>
         </section>
         </div>
     </header>
+
+    <script src="public/js/login.js"></script>
+
 </body>
-
-
 
 </html>
