@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, inital-scale=1.0">
+    <title>Travel Blogger</title>
+    <script src=""></script>
+    <!-- Cinzel font import from google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+    <!-- Fauna One font import from google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fauna+One&display=swap" rel="stylesheet">
+    <style>
+        /* changes all headers to cinzel with bold font weight */
+        header, h1, h2, h3, h4, h5 {
+            font-family: 'Cinzel', serif; 
+            font-weight: bold;
+        }
+        /* sets all unspecified text to fauna one and font size to 21px */
+        body {
+            font-family: 'Fauna One', serif; font-size: 21px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="profile-page" style="font-size: 33px;">{{username}}'s Profile</header>
+        <div class="card">
+        <section class="h-100">
+            <div class="container h-100">
+                <div class="row justify-content-md-center h-100">
+                    <div class="card-body">
+                        <h2 class="card-title"></h3>
+                        <div class="row mt-4">
+                            <div class="col-md-6 project-list">
+                              <h3>Current Posts: </h3>
+                          
+                              <div class="row mb-2">
+                                <div class="col-md-8">
+                                  <!-- <h4><a href="/post/{{post.id}}">{{post.name}}</a></h4> -->
+                                </div>
+                                <div class="col-md-4">
+                                    <p>Yo I traveled here and yep i did so yeah i did :)</p>
+                                  <!-- <h4><a href="/post/{{post.id}}">{{post.body}}</a></h4> -->
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+            </div>
+        </section>
+        </div>
+    </header>
+</body>
+
+</html>
