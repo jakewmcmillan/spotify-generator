@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
     <!-- Fauna One font import from google fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Fauna+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./public/css/newpoststyles.css" />
     <style>
         /* changes all headers to cinzel with bold font weight */
         header, h1, h2, h3, h4, h5 {
@@ -27,6 +28,11 @@
 </head>
 
 <body>
+    <!-- cloudinary upload widget -->
+    <script 
+    src="https://widget.cloudinary.com/v2.0/global/all.js" 
+    type="text/javascript">
+    </script>
     <header></header>
         <div class="card">
         <section class="h-100">
@@ -55,7 +61,9 @@
                                 </div>
 
                                 <div class="project-list">
-                                    <button class="btn btn-success btn-block">Create New Post</button>
+                                    <button id="open-modal" class="btn btn-primary btn-block">Create New Post </button>
+                                </div>
+
                                 </div>
                               </div>
                             </div>
@@ -64,7 +72,44 @@
                 </div>
             </section>
         </div>
-    </header>
+        <!-- Modal popups onclick on New Post -->
+        <div id="modal-overlay">
+            <div id="modal">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                <h2>Enter your destination info</h2>
+                </div>
+                <!-- Modal Content -->
+                <div class="modal-content">
+                <form id='post'>
+                    <label for="dname">Destination name:</label><br />
+                    <input type="text" id="dname" name="dname" /><br />
+                    <label for="address">Address:</label><br />
+                    <input type="text" id="address" name="address" /><br />
+                    <label for="description">Description:</label><br />
+                    <input type="text" id="description" name="description" /> 
+                </form>
+                <button 
+                    id="upload_widget" >
+                        Add Image
+                    </button> 
+                    <img id='uploaded-img' src="data:," alt width=200>
+
+                    <div class='thumbnail'> </div>
+                </div>
+                <!-- Button when Modal is open-->
+                <div class="modal-footer">
+                <button id="close-modal">Close</button>
+                
+                <button form='post' type='submit' id='submit'>Submit</button>
+                </div>
+            </div>
+            </div>
+        <!-- local upload instantiation -->
+        <script 
+        src="./public/js/profile.js" 
+        type="text/javascript">
+       </script>
 </body>
 
 </html>
