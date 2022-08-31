@@ -16,9 +16,12 @@ const loginFormHandler = async (event) => {
         alert(response.statusText);
       }
     }
+    else {
+      username
+    }
 };
-  
-  const signupFormHandler = async (event) => {
+
+const signupFormHandler = async (event) => {
     event.preventDefault();
   
     const email = document.querySelector('#email-signup').value.trim();
@@ -38,12 +41,12 @@ const loginFormHandler = async (event) => {
       }
     }
 };
-  
-  document
-    .querySelector('.login-form')
-    .addEventListener('submit', loginFormHandler);
-  
-  document
-    .querySelector('.signup-form')
-    .addEventListener('submit', signupFormHandler);
-  
+
+document
+  .querySelector('.login-form')
+  .addEventListener('submit', loginFormHandler);
+
+document
+  .querySelector('.signup-form')
+  .addEventListener('submit', signupFormHandler);
+   

@@ -42,20 +42,21 @@
                                         <p>map here</p>
                                     </div>
                                 </section>
-
+                                
                               <div>
                                 <div>
-                                    <h5>location: {{post: location}}</h5>
-                                  <!-- <h5><a href="/post/{{post.id}}">{{post.name}}</a></h5> -->
+                                    {{#each post as |post|}}
+                                    <div>
+                                        <h5>location: <a href="/post/{{post.id}}">{{post.locationData}}</a></h5>
+                                        <div class="ml-4">
+                                            <p><a href="/post/{{post.id}}">{{post.postContent}}</a></p>
+                                        </div>
+                                        <img class="mr-3" src=".../64x64" alt="Generic placeholder image">
+                                    </div>
+                                    {{/each}}
                                 </div>
-
-                                <div class="ml-4">
-                                    <p>Yo I traveled here and yep i did so yeah i did :)</p>
-                                  <!-- <p><a href="/post/{{post.id}}">{{post.body}}</a></p> -->
-                                </div>
-
                                 <div class="project-list">
-                                    <button class="btn btn-success btn-block">Create New Post</button>
+                                    <button class="btn btn-primary btn-block">Create New Post</button>
                                 </div>
                               </div>
                             </div>
