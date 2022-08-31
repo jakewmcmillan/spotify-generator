@@ -1,7 +1,7 @@
 // Import all models
 const User = require("./User");
 const Post = require("./Post");
-const Comment = require("./Comment");
+//const Comment = require("./Comment");
 
 // Create relationships between all our models
 
@@ -10,12 +10,13 @@ User.hasMany(Post, {
   onDelete: "CASCADE",
 });
 
-User.hasMany(Comment, {
+Post.belongsTo(User, {
   foreignKey: "userId",
   onDelete: "CASCADE",
 });
 
-Post.belongsTo(User, {
+/*
+User.hasMany(Comment, {
   foreignKey: "userId",
   onDelete: "CASCADE",
 });
@@ -32,5 +33,6 @@ Comment.belongsTo(User, {
 Comment.belongsTo(Post, {
   foreignKey: "postId",
 });
+*/
 
-module.exports = { User, Comment, Post, };
+module.exports = { User, Post, };
