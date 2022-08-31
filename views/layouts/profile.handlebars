@@ -36,7 +36,7 @@
                         <h2 class="profile-page text-center" style="font-size: 33px;">{{username}}'s Profile</h2>
                         <div class="row mt-4">
                             <div>
-                              <h3>Current Posts: </h3>
+                              <h3>Current Adventure Log: </h3>
                                 <section>
                                     <div>
                                         <p>map here</p>
@@ -44,19 +44,21 @@
                                 </section>
                                 
                               <div>
-                                <div>
-                                    {{#each post as |post|}}
+                                  {{#if post.length}}
                                     <div>
-                                        <h5>location: <a href="/post/{{post.id}}">{{post.locationData}}</a></h5>
-                                        <div class="ml-4">
-                                            <p><a href="/post/{{post.id}}">{{post.postContent}}</a></p>
+                                        {{#each post as |post|}}
+                                        <div>
+                                            <h5>location: <a href="/post/{{post.id}}">{{post.locationData}}</a></h5>
+                                            <div class="ml-4">
+                                                <p><a href="/post/{{post.id}}">{{post.postContent}}</a></p>
+                                            </div>
+                                            <img class="mr-3" src="{{post.imageURL}}" alt="Generic placeholder image">
                                         </div>
-                                        <img class="mr-3" src=".../64x64" alt="Generic placeholder image">
+                                        {{/each}}
                                     </div>
-                                    {{/each}}
-                                </div>
+                                  {{/if}}
                                 <div class="project-list">
-                                    <button class="btn btn-primary btn-block">Create New Post</button>
+                                    <button class="btn btn-primary btn-block">Create New Post </button>
                                 </div>
                               </div>
                             </div>
