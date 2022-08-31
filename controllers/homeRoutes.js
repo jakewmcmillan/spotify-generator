@@ -14,18 +14,30 @@ const withAuth = require('../utils/auth');
 //       ],
 //     });
 
-//     // Serialize data so the template can read it
-//     const posts = postData.map((project) => posts.get({ plain: true }));
+router.get('/', async (req, res) => {
+  try {
+    // Get all posts and JOIN with user data
+    const postData = await Post.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
+    });
 
-//     // Pass serialized data and session flag into template
-//     res.render('homepage', { 
-//       posts, 
-//       logged_in: req.session.logged_in 
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+    // Serialize data so the template can read it
+    const posts = postData.map((project) => posts.get({ plain: true }));
+
+    // Pass serialized data and session flag into template
+    res.render('homepage', { 
+      posts, 
+      logged_in: req.session.logged_in 
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.get('/posts/:id', async (req, res) => {
   try {
