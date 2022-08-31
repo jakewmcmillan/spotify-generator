@@ -15,14 +15,24 @@ Post.init(
       autoIncrement: true,
     },
     postTitle: {
-      type: DataTypes.STRING(25),
+      type: DataTypes.STRING(40),
       allowNull: false,
       unique: true,
     },
+    //this is the comment
     postContent: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
+    },
+    imageURL: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    //this may end up coming out depending on how the maps work
+    locationData: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     dateCreated: {
       type: DataTypes.DATEONLY,
