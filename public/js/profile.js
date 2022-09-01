@@ -104,13 +104,13 @@ const locationWidget = cloudinary.createUploadWidget(
     }
   );
 
-  document.getElementById("profilewidget").addEventListener(
+  /*document.getElementById("profilewidget").addEventListener(
     "click",
     function () {
       profileWidget.open();
     },
     false
-  );
+  );*/
 
 //modal handlers
 

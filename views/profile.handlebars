@@ -46,7 +46,6 @@
           </li>
         </ul>
       </nav>
-    </body>
     </header>
 
     <main>
@@ -65,7 +64,7 @@
                           src="./assets/images/profilepic.jpg"
                           alt="User's profile image"
                         />
-                        <button id="profileWidget">Update Profile Picture</button>
+                        <button id="open-modal">Update Profile Picture</button>
                         <h3>Username goes here </h3>
                       </div>
                       <div class="card-body">
@@ -113,8 +112,7 @@
           </div>
         </div>
       </div>
-    </main>
-  </body>
+    
     <!-- Modal popups onclick on New Post -->
         <div id="modal-overlay">
             <div id="modal">
@@ -149,7 +147,7 @@
                         <button id="upload_widget" >
                             Add Image
                         </button> 
-                        <img id='uploaded-img' src="data:," alt width=50>
+                        <img id='uploaded-img' src="data:," alt width=200>
                         </div>
                 </div>
                 <!-- Button when Modal is open-->
@@ -159,6 +157,7 @@
                 </div>
             </div>
         </div>
+    </main>
         <!-- cloudinary upload widget -->
         <script 
         src="https://widget.cloudinary.com/v2.0/global/all.js" 
@@ -166,8 +165,7 @@
         </script>
         <!-- local upload instantiation -->
         <script 
-        src="./public/js/profile.js" 
+        src="./js/profile.js" 
         type="text/javascript">
        </script>
-  </body>
   
