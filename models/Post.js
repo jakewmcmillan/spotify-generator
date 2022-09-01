@@ -14,13 +14,13 @@ Post.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    postTitle: {
+    title: {
       type: DataTypes.STRING(40),
       allowNull: false,
       unique: true,
     },
     //this is the comment
-    postContent: {
+    content: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
@@ -30,14 +30,9 @@ Post.init(
       allowNull: true,
     },
     //this may end up coming out depending on how the maps work
-    locationData: {
+    address: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    dateCreated: {
-      type: DataTypes.DATEONLY,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
     },
     userId: {
       type: DataTypes.INTEGER,
