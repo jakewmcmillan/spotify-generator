@@ -5,7 +5,7 @@ const withAuth = require('../utils/auth');
 // Login Route
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/profile');
+    res.redirect('/');
     return;
   }
 
@@ -17,7 +17,7 @@ router.get('/login', (req, res) => {
 // Signup Route
 router.get('/signup', (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/profile');
+    res.redirect('/');
     return;
   }
 
@@ -44,7 +44,7 @@ router.get('/', withAuth, async (req, res) => {
     })
 
     const user = userData.get({ plain: true });
-    const posts = postData.map((project) => posts.get({ plain: true }));
+    const posts = postData.map((post) => posts.get({ plain: true }));
 
     res.render('profile', {
       ...user,

@@ -20,10 +20,15 @@ router.post('/signup', async (req, res) => {
   }
 });
 
+// Checks if user info is correct to login
 router.post('/', async (req, res) => {
   try {
-    const userData = await User.findOne({ where: { username: req.body.username } });
-
+    console.log("Hello");
+    console.log(req);
+    const userData = await User.findOne({ 
+      where: { username: req.body.username }
+    });
+    console.log(userData);
     if (!userData) {
       res
         .status(400)
