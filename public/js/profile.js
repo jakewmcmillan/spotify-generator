@@ -156,19 +156,29 @@ const hideModal = (e) => {
 const form = document.getElementById('post');
 const submitModal = async (e) => {
   e.preventDefault();
-  console.log('a bunch of stuff');
-  const destination = document.getElementById('dname').value.trim();
+  const title = document.getElementById('dname').value.trim();
   const address = document.getElementById('address').value.trim();
   const description = document.getElementById('description').value.trim();
   const imgurl = document.getElementById('uploaded-img').getAttribute('src');
   
   //send request
-  if (destination && address && description && imgurl) {
-    const response = await fetch('/api/posts', { //is this the right route? someone check
+  if (title && address && description && imgurl) {
+    const payload = {
+        title:title,
+        address:address,
+        imageURL:imgurl,
+        content: description}
+    console.log(payload)
+    const response = await fetch('/api/destinations/post', { //is this the right route? someone check
       method: 'POST',
-      body: JSON.stringify({ destination, address, description, imgurl}),
+      body: JSON.stringify(payload),
+        headers: { 'Content-Type': 'application/json' }
     });
-    //do something w response
+    if (response.ok) {
+        alert('Post Added!')
+      } else {
+        alert('Failed to add to add post!');
+      }
 }
 
   hideModalWindow();
