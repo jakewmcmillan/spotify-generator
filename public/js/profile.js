@@ -98,15 +98,22 @@ const hideModal = (e) => {
 
 //submit form
 const form = document.getElementById('post');
-const submitModal = (e) => {
+const submitModal = async (e) => {
   e.preventDefault();
   console.log('a bunch of stuff');
-  const destination = document.getElementById('dname').value;
-  const address = document.getElementById('address').value;
-  const description = document.getElementById('description').value;
+  const destination = document.getElementById('dname').value.trim();
+  const address = document.getElementById('address').value.trim();
+  const description = document.getElementById('description').value.trim();
   const imgurl = document.getElementById('uploaded-img').getAttribute('src');
   
   //send request
+  if (destination && address && description && imgurl) {
+    const response = await fetch('/api/posts', { //is this the right route? someone check
+      method: 'POST',
+      body: JSON.stringify({ destination, address, description, imgurl}),
+    });
+    //do something w response
+}
 
   hideModalWindow();
 }

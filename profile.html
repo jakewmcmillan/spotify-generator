@@ -81,30 +81,41 @@
                 </div>
                 <!-- Modal Content -->
                 <div class="modal-content">
-                <form id='post'>
-                    <label for="dname">Destination name:</label><br />
-                    <input type="text" id="dname" name="dname" /><br />
-                    <label for="address">Address:</label><br />
-                    <input type="text" id="address" name="address" /><br />
-                    <label for="description">Description:</label><br />
-                    <input type="text" id="description" name="description" /> 
-                </form>
-                <button 
-                    id="upload_widget" >
-                        Add Image
-                    </button> 
-                    <img id='uploaded-img' src="data:," alt width=200>
-
-                    <div class='thumbnail'> </div>
+                    <div class="container h-100">
+                        <form id='post'>
+                            <div class="login-info mt-3">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Destination Name:</span>
+                                    </div>
+                                    <input type="text" id="dname" name="dname" class="form-control" aria-label="dname" aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+                            <div class="login-info mt-3">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">Address:</span>
+                                    </div>
+                                    <input type="text" id="address" name="address" class="form-control" aria-label="address" aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" placeholder="Describe the place here..." type="text" id="description" name="description" rows="3"></textarea> 
+                            </div>
+                            </form>
+                        <button id="upload_widget" >
+                            Add Image
+                        </button> 
+                        <img id='uploaded-img' src="data:," alt width=200>
+                        </div>
                 </div>
                 <!-- Button when Modal is open-->
                 <div class="modal-footer">
-                <button id="close-modal">Close</button>
-                
-                <button form='post' type='submit' id='submit'>Submit</button>
+                    <button id="close-modal">Close</button>
+                    <button form='post' type='submit' id='submit'>Submit</button>
                 </div>
             </div>
-            </div>
+        </div>
         <!-- local upload instantiation -->
         <script 
         src="./public/js/profile.js" 
