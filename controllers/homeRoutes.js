@@ -59,6 +59,8 @@ router.get('/', withAuth, async (req, res) => {
 
 module.exports = router;
 
+
+
 // router.get('/posts/:id', async (req, res) => {
 //   try {
 //     const postData = await Post.findByPk(req.params.id, {
