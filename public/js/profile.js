@@ -98,19 +98,19 @@ const locationWidget = cloudinary.createUploadWidget(
     (error, result) => {
       if (!error && result && result.event === "success") {
         console.log("Done! Here is the image info: ", result.info);
-        document.querySelector('.avatar')
-          .setAttribute("src", result.info.secure_url);
+        const avatar = document.getElementById('profpic');
+        avatar.setAttribute("src", result.info.secure_url);
       }
     }
   );
 
-  /*document.getElementById("profilewidget").addEventListener(
+  document.getElementById("profilewidget").addEventListener(
     "click",
     function () {
       profileWidget.open();
     },
     false
-  );*/
+  );
 
 //modal handlers
 
