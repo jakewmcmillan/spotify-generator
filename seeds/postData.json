@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1",
+        "postTitle": "The White House",
+        "postContent": "Would have looked better in black.",
+        "imageURL": "http://via.placeholder.com/180x180",
+        "locationData": "Washington, D.C.",
+        "dateCreated": "October 31, 2021",
+        "userId": "1"
+    },
+    {
+        "id": "2",
+        "postTitle": "Wrigley Field",
+        "postContent": "I got stuck in the ivy in center field, good hotdogs though.",
+        "imageURL": "http://via.placeholder.com/180x180",
+        "locationData": "Chicago, Illinois",
+        "dateCreated": "October 31, 2016",
+        "userId": "2"
+    },
+    {
+        "id": "3",
+        "postTitle": "Outer Banks",
+        "postContent": "Too many surfers, needs more sharks.",
+        "imageURL": "http://via.placeholder.com/180x180",
+        "locationData": "Outer Banks, North Carolina",
+        "dateCreated": "October 31, 2019",
+        "userId": "3"
+    },
+    {
+        "id": "4",
+        "postTitle": "Yellowstone",
+        "postContent": "Fun camping spot but I didn't find a single, yellow, stone.",
+        "imageURL": "http://via.placeholder.com/180x180",
+        "locationData": "Cody, Wyoming",
+        "dateCreated": "October 31, 2022",
+        "userId": "4"
+    }
+]
