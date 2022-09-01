@@ -49,7 +49,8 @@ router.get('/', withAuth, async (req, res) => {
     res.render('profile', {
       ...user,
       posts,
-      loggedIn: true
+      loggedIn: true,
+      style: 'newpoststyles.css'
     });
   } catch (err) {
     res.status(500).json(err);
