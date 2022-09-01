@@ -1,5 +1,5 @@
 //cloudinary handlers
-const myWidget = cloudinary.createUploadWidget(
+const locationWidget = cloudinary.createUploadWidget(
     {
       cloudName: "daheygjio",
       uploadPreset: "travelblogger",
@@ -51,10 +51,66 @@ const myWidget = cloudinary.createUploadWidget(
   document.getElementById("upload_widget").addEventListener(
     "click",
     function () {
-      myWidget.open();
+      locationWidget.open();
     },
     false
   );
+
+  const profileWidget = cloudinary.createUploadWidget(
+    {
+      cloudName: "daheygjio",
+      uploadPreset: "profilepics",
+      sources: ["local", "url", "google_drive", "facebook", "instagram"],
+      showAdvancedOptions: false,
+      clientAllowedFormats: "image",
+      cropping: false,
+      multiple: false,
+      //thumbnails: '.thumbnail',
+      defaultSource: "local",
+      maxImageFileSize: 2000000, //restrict file size to less than 2MB
+      maxImageWidth: 2000, //Scales the image down to a width of 2000 pixels before uploading
+      styles: {
+        palette: {
+          window: "#CAD2C5",
+          sourceBg: "#EDEDE4",
+          windowBorder: "#84A98C",
+          tabIcon: "#354F52",
+          inactiveTabIcon: "#52796F",
+          menuIcons: "#354F52",
+          link: "#84A98C",
+          action: "#2F3E46",
+          inProgress: "#354F52",
+          complete: "#84A98C",
+          error: "#c43737",
+          textDark: "#2F3E46",
+          textLight: "#FFFFFF"
+        },
+        fonts: {
+          default: null,
+          "'Fauna One', sans-serif": {
+            url:
+              "https://fonts.googleapis.com/css2?family=Fauna+One&display=swap",
+            active: true
+          }
+        }
+      }
+    },
+    (error, result) => {
+      if (!error && result && result.event === "success") {
+        console.log("Done! Here is the image info: ", result.info);
+        document.querySelector('.avatar')
+          .setAttribute("src", result.info.secure_url);
+      }
+    }
+  );
+
+  /*document.getElementById("profilewidget").addEventListener(
+    "click",
+    function () {
+      profileWidget.open();
+    },
+    false
+  );*/
 
 //modal handlers
 
