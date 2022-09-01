@@ -1,66 +1,91 @@
-{{!-- <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, inital-scale=1.0">
-    <title>Travel Blogger</title>
-    <script src=""></script>
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-    <!-- Cinzel font import from google fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
-    <!-- Fauna One font import from google fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Fauna+One&display=swap" rel="stylesheet">
-    <style>
-        /* changes all headers to cinzel with bold font weight */
-        header, h1, h2, h3, h4, h5 {
-            font-family: 'Cinzel', serif; 
-            font-weight: bold;
-        }
-        /* sets all unspecified text to fauna one and font size to 21px */
-        body {
-            font-family: 'Fauna One', serif; font-size: 21px;
-        }
-    </style>
-</head> --}}
-
-        <div class="card">
-        <section class="h-100">
-            <div class="container h-100">
-                <div class="row justify-content-md-center h-100">
-                    <div class="card-body">
-                        <h2 class="profile-page text-center" style="font-size: 33px;">{{username}}'s Profile</h2>
-                        <div class="row mt-4">
-                            <div>
-                              <h3>Current Adventure Log: </h3>
-                                <section>
-                                    <div>
-                                        <p>map here</p>
-                                    </div>
-                                </section>
-                                
-                              <div>
-                                  {{#if post.length}}
-                                    <div>
-                                        {{#each post as |post|}}
-                                        <div>
-                                            <h5>location: <a href="/post/{{post.id}}">{{post.locationData}}</a></h5>
-                                            <div class="ml-4">
-                                                <p><a href="/post/{{post.id}}">{{post.postContent}}</a></p>
-                                            </div>
-                                            <img class="mr-3" src="{{post.imageURL}}" alt="Generic placeholder image">
-                                        </div>
-                                        {{/each}}
-                                    </div>
-                                  {{/if}}
-                                <div class="project-list">
-                                    <button class="btn btn-primary btn-block">Create New Post </button>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
+<!-- Desktop Navbar -->
+    <header>
+      <nav>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="#"><img src="./assets/images/y-1.jpg" alt="logo" srcset=""></a>
+          </li>
+          <li class="nav-item">
+            <a href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="#">Adventure Log</a>
+          </li>
+          <li class="nav-item">
+            <a href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <button class="btn-primary">Logout</button>
+          </li>
+        </ul>
+      </nav>
+    </body>
     </header>
 
+    <main>
+      <div class="rt-container">
+        <div class="col-rt-12">
+          <div class="Scriptcontent">
+            <!-- User Profile -->
+            <div class="student-profile py-4">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-4">
+                    <div class="card shadow-sm">
+                      <div class="card-header bg-transparent text-center avatar">
+                        <img
+                          class="avatar"
+                          src="./assets/images/profilepic.jpg"
+                          alt="User's profile image"
+                        />
+                        <input type="file" id="actual-btn"/>
+                        <label for="actual-btn">Choose File</label><br />
+                        <h3>Username goes here </h3>
+                      </div>
+                      <div class="card-body">
+                        <p class="mb-0">
+                          If we want to implement a description for user
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-8">
+                    <div class="card shadow-sm">
+                      <div class="card-header bg-transparent border-0">
+                        <h3 class="mb-0">
+                          <i class="far fa-clone pr-1"></i>Adventure Log:
+                        </h3>
+                      </div>
+                      <div class="card-body pt-0">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                          Autem labore accusamus minus explicabo ipsa corporis incidunt, 
+                          quis recusandae distinctio deserunt, dicta ea inventore magnam 
+                          eius facere quia voluptatum laborum qui.</p>
+                      </div>
+                    </div>
+                    <div style="height: 26px"></div>
+                    <div class="card shadow-sm">
+                      <div class="card-header bg-transparent border-0">
+                        <h3 class="mb-0">
+                          <i class="far fa-clone pr-1"></i>Map Goes Here:
+                        </h3>
+                      </div>
+                      <div class="card-body pt-0">
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit, sed do eiusmod tempor incididunt ut labore et
+                          dolore magna aliqua. Ut enim ad minim veniam, quis
+                          nostrud exercitation ullamco laboris nisi ut aliquip
+                          ex ea commodo consequat.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
