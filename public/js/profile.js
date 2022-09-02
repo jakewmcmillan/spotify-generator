@@ -5,9 +5,23 @@ const geocoder = new MapboxGeocoder({
     placeholder: 'Search Address...'
 });
 
+const geojson = {
+    'type': 'FeatureCollection',
+    'features': [
+      {
+        'type': 'Feature',
+        'geometry': {
+          'type': 'Point',
+          'coordinates': [-77.0375935, 38.910095]
+        },
+        'properties': {
+          'description': '<strong>Dog Park</strong> <br>This is a lovely spot to walk your dogs!'
+        }
+      },
+    ]
+  };
 
 geocoder.addTo('#geocoder');
-
 // Add geocoder result to container.
 geocoder.on('result', (e) => {
     const locationDiv = document.getElementById('geocoder');
@@ -188,7 +202,7 @@ const submitModal = async (e) => {
         coords:coords,
         image_url:imgurl,
         content: description}
-    console.log(payload)
+    
     const response = await fetch('/api/destinations/post', { //is this the right route? someone check yes emily its the right route :D
       method: 'POST',
       body: JSON.stringify(payload),
@@ -197,6 +211,16 @@ const submitModal = async (e) => {
     if (response.ok) {
       document.location.reload();
         alert('Post Added!')
+        geojson['features'].push({
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Point',
+              'coordinates': JSON.parse(coords)
+            },
+            'properties': {
+              'description': `<strong>${title}</strong> <br>${description}`
+            }
+          })
       } else {
         alert('Failed to add to add post!');
       }
@@ -212,3 +236,72 @@ form.addEventListener("submit", (e) => {
 
 modalOverlay.addEventListener("click", hideModal);
 
+      const map = new mapboxgl.Map({
+        container: 'map',
+        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [-96, 37.8],
+        zoom: 3
+      });
+
+      map.on('load', () => {
+        map.addSource('places', {
+          'type': 'geojson',
+          'data': geojson
+        });
+
+        map.loadImage(
+            'https://res.cloudinary.com/daheygjio/image/upload/v1662094931/profilepics/zy0jtqhpeolszswbuvvm.png',
+            (error, image) => {
+                if (error) throw error;
+
+                // Add the image to the map style.
+                map.addImage('dog', image);
+
+        
+       map.addLayer({
+        'id': 'places',
+        'type': 'symbol',
+        'source': 'places',
+        'layout': {
+          'icon-allow-overlap': true,
+          'icon-image': 'dog',
+          'icon-size': 0.04
+          }
+        });
+        
+        // When a click event occurs on a feature in the places layer, open a popup at the
+        // location of the feature, with description HTML from its properties.
+        map.on('click', 'places', (e) => {
+            // Copy coordinates array.
+            map.flyTo({
+                center: e.features[0].geometry.coordinates,
+                zoom: 6
+                });
+            const coordinates = e.features[0].geometry.coordinates.slice();
+            const description = e.features[0].properties.description;
+
+            // Ensure that if the map is zoomed out such that multiple
+            // copies of the feature are visible, the popup appears
+            // over the copy being pointed to.
+            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
+
+            new mapboxgl.Popup()
+                .setLngLat(coordinates)
+                .setHTML(description)
+                .addTo(map);
+        });
+
+        // Change the cursor to a pointer when the mouse is over the places layer.
+        map.on('mouseenter', 'places', () => {
+            map.getCanvas().style.cursor = 'pointer';
+        });
+
+        // Change it back to a pointer when it leaves.
+        map.on('mouseleave', 'places', () => {
+            map.getCanvas().style.cursor = '';
+        });
+    });
+      });
