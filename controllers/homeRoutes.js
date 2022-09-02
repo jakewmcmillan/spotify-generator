@@ -45,6 +45,7 @@ router.get('/', withAuth, async (req, res) => {
     // })
 
     const user = userData.get({ plain: true });
+    // console.log({user});
     // const posts = postData.map((post) => post.get({ plain: true }));
 
     res.render('profile', {
