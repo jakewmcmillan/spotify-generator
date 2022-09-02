@@ -211,5 +211,3 @@ form.addEventListener("submit", (e) => {
 
 modalOverlay.addEventListener("click", hideModal);
 
-
-
