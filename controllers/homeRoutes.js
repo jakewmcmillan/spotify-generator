@@ -47,12 +47,31 @@ router.get('/', withAuth, async (req, res) => {
     const user = userData.get({ plain: true });
     // console.log({user});
     // const posts = postData.map((post) => post.get({ plain: true }));
-
+    const userSpread = {...user};
+    const logs = userSpread.posts;
+    const geojson = {
+      "type": "FeatureCollection",
+      "features": []
+    };
+    logs.forEach((place) => {
+      geojson['features'].push({
+        'type': 'Feature',
+        'geometry': {
+          'type': 'Point',
+          'coordinates': JSON.parse(place.coords)
+        },
+        'properties': {
+          'title': place.title,
+          'description': place.content
+        }
+      })
+    })
     res.render('profile', {
       ...user,
       // posts,
       loggedIn: true,
-      style: 'newpoststyles.css'
+      style: 'newpoststyles.css',
+      geojson: JSON.stringify(geojson)
     });
   } catch (err) {
     res.status(500).json(err);
