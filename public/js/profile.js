@@ -189,12 +189,13 @@ const submitModal = async (e) => {
         image_url:imgurl,
         content: description}
     console.log(payload)
-    const response = await fetch('/api/destinations/post', { //is this the right route? someone check
+    const response = await fetch('/api/destinations/post', { //is this the right route? someone check yes emily its the right route :D
       method: 'POST',
       body: JSON.stringify(payload),
         headers: { 'Content-Type': 'application/json' }
     });
     if (response.ok) {
+      document.location.reload();
         alert('Post Added!')
       } else {
         alert('Failed to add to add post!');
