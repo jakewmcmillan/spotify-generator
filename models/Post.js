@@ -17,15 +17,13 @@ Post.init(
     title: {
       type: DataTypes.STRING(40),
       allowNull: false,
-      unique: true,
     },
     //this is the comment
     content: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
     },
-    imageURL: {
+    image_url: {
       type: DataTypes.STRING,
       allowNull: true,
     },

@@ -34,21 +34,22 @@ router.get('/', withAuth, async (req, res) => {
       attributes: { exclude: ['password'] },
       include: [{ model: Post }],
     });
-    const postData = await Post.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['username'],
-        },
-      ],
-    })
+
+    // const postData = await Post.findAll({
+    //   include: [
+    //     {
+    //       model: User,
+    //       attributes: ['username'],
+    //     },
+    //   ],
+    // })
 
     const user = userData.get({ plain: true });
-    const posts = postData.map((post) => post.get({ plain: true }));
+    // const posts = postData.map((post) => post.get({ plain: true }));
 
     res.render('profile', {
       ...user,
-      posts,
+      // posts,
       loggedIn: true,
       style: 'newpoststyles.css'
     });
@@ -62,20 +63,20 @@ module.exports = router;
 router.get('/destinations/post/:id', async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
+      include: [{ 
+          model: User,  
+          attributes: ['username'],
         },
       ],
     });
 
     const posts = postData.get({ plain: true });
+    res.status(200).json(posts);
 
-    res.render('post', {
-      ...posts,
-      logged_in: req.session.logged_in
-    });
+    // res.render('profile', {
+    //   ...posts,
+    //   logged_in: req.session.logged_in
+    // });
   } catch (err) {
     res.status(500).json(err);
   }

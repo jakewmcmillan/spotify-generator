@@ -186,7 +186,7 @@ const submitModal = async (e) => {
         title:title,
         address:address,
         coords:coords,
-        imageURL:imgurl,
+        image_url:imgurl,
         content: description}
     console.log(payload)
     const response = await fetch('/api/destinations/post', { //is this the right route? someone check
