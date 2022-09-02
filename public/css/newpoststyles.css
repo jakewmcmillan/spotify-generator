@@ -46,6 +46,9 @@
     margin-bottom: 1rem;
   }
 
+    .mapboxgl-ctrl-geocoder {
+    min-width: 100%;
+    }
 
   .nav-item {
     list-style: none;

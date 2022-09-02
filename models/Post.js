@@ -32,6 +32,10 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    coords: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     userId: {
       type: DataTypes.INTEGER,
       references: {

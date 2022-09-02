@@ -1,3 +1,20 @@
+//geocoding
+mapboxgl.accessToken = 'pk.eyJ1IjoiZW1pbHllcm9zZSIsImEiOiJjbDdqM2ZmNWwwZDd6NDJvOXNqNjFoaWJpIn0.zkgmR75M9mTqE27ouxHxVA';
+const geocoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    placeholder: 'Search Address...'
+});
+
+
+geocoder.addTo('#geocoder');
+
+// Add geocoder result to container.
+geocoder.on('result', (e) => {
+    const locationDiv = document.getElementById('geocoder');
+    locationDiv.setAttribute('data-coords',JSON.stringify(e.result.center));
+    locationDiv.setAttribute('data-location',JSON.stringify(e.result.place_name));
+});
+
 //cloudinary handlers
 const locationWidget = cloudinary.createUploadWidget(
     {
@@ -130,11 +147,11 @@ const closeModalButton = document.getElementById("close-modal");
 const hideModalWindow = () => {
     modalOverlay.style.display = 'none';
     const destinationEl = document.getElementById('dname');
-    const addressEl = document.getElementById('address');
+    geocoder.clear();
     const descriptionEl = document.getElementById('description');
     //clear form values
     destinationEl.value='';
-    addressEl.value ='';
+    
     descriptionEl.value='';
     document.getElementById('uploaded-img').setAttribute('src','data:,')
 }
@@ -156,8 +173,10 @@ const hideModal = (e) => {
 const form = document.getElementById('post');
 const submitModal = async (e) => {
   e.preventDefault();
+  const geocoderEl = document.getElementById('geocoder')
   const title = document.getElementById('dname').value.trim();
-  const address = document.getElementById('address').value.trim();
+  const address = geocoderEl.getAttribute('data-location');
+  const coords = geocoderEl.getAttribute('data-coords');
   const description = document.getElementById('description').value.trim();
   const imgurl = document.getElementById('uploaded-img').getAttribute('src');
   
@@ -166,6 +185,7 @@ const submitModal = async (e) => {
     const payload = {
         title:title,
         address:address,
+        coords:coords,
         image_url:imgurl,
         content: description}
     console.log(payload)
@@ -183,6 +203,13 @@ const submitModal = async (e) => {
 
   hideModalWindow();
 }
-form.addEventListener("submit", (e) => submitModal(e))
+form.addEventListener("submit", (e) => {
+    if (e.submitter === document.getElementById('submit')) {
+        submitModal(e)
+    }
+})
 
 modalOverlay.addEventListener("click", hideModal);
+
+
+
